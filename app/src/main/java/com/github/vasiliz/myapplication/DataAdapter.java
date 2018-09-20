@@ -14,20 +14,21 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private LayoutInflater layoutInflater;
     private List<Model> modelList;
 
-    public DataAdapter(Context context, List<Model> models){
+    public DataAdapter(Context context, List<Model> models) {
         this.layoutInflater = LayoutInflater.from(context);
         this.modelList = models;
     }
+
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       View view = layoutInflater.inflate(R.layout.item_list, parent, false);
-       return new ViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.item_list, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(DataAdapter.ViewHolder holder, int position) {
         Model model = modelList.get(position);
-        holder.id.setText((int) model.getId());
+        holder.id.setText(String.valueOf(model.getId()));
 
     }
 
@@ -38,6 +39,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView id;
+
         public ViewHolder(View itemView) {
             super(itemView);
             id = itemView.findViewById(R.id.item_text_id);
