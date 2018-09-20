@@ -28,7 +28,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(DataAdapter.ViewHolder holder, int position) {
         Model model = modelList.get(position);
-        holder.id.setText(String.valueOf(model.getId()));
+        holder.id.setmText(String.valueOf(model.getId()));
 
     }
 
@@ -38,7 +38,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView id;
+        private CustomView id;
 
         public ViewHolder(View itemView) {
             super(itemView);
