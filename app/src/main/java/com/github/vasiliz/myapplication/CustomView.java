@@ -40,19 +40,19 @@ public class CustomView extends View {
         int halfHeight = this.getMeasuredHeight() / 2;
         int r = 0;
         if (halfWidth > halfHeight) {
-            r = halfHeight - 10;
+            r = halfHeight-30;
         } else {
-            r = halfHeight - 10;
+            r = halfHeight-30;
         }
 
         mCircle.setStyle(Paint.Style.FILL);
         mCircle.setAntiAlias(true);
         mCircle.setColor(mColor);
-
         canvas.drawCircle(halfWidth, halfHeight, r, mCircle);
+
         mCircle.setTextAlign(Paint.Align.CENTER);
         mCircle.setTextSize(50);
         mCircle.setColor(mLabelColor);
-        canvas.drawText(mText, halfWidth, halfHeight, mCircle);
+        canvas.drawText(mText, halfWidth, halfHeight+15, mCircle);
     }
 }

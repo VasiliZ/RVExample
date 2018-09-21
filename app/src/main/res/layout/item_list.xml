@@ -9,7 +9,6 @@
         android:id="@+id/item_text_id"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:textSize="20pt"
         custom:circleColor = "#00f9a6"
         custom:circleLabel = "test"
         custom:labelColor = "#000000"/>
