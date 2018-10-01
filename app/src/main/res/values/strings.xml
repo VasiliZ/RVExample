@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="email_hint">email</string>
+    <string name="password_hint">password (optional)</string>
+    <string name="sing_in">sing in or register</string>
+    <string name="password_error">This password is too short</string>
+    <string name="user_name_error_empty">User name is empty</string>
+    <string name="validation_email_error">email is not valid</string>
 </resources>
