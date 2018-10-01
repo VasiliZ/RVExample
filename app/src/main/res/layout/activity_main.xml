@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -64,6 +64,24 @@
             />
 
     </LinearLayout>
+    <Button
+        android:id="@+id/snackbar"
+        android:text="Snackbar"
+        android:layout_below="@+id/login_form"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/float_button"
+        android:layout_alignParentRight="true"
+        android:gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="@dimen/dp_16_margin"
+        android:layout_marginRight="@dimen/dp_16_margin"
+        android:src="@android:drawable/ic_menu_save"
+        android:layout_height="wrap_content"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -75,4 +93,4 @@
     </android.support.v7.widget.RecyclerView>
 
 
-</LinearLayout>
+</RelativeLayout>

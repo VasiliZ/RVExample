@@ -2,18 +2,20 @@ package com.github.vasiliz.myapplication.model;
 
 import android.os.AsyncTask;
 
-public class LoginModelImpl implements ILoginModel {
+import com.github.vasiliz.myapplication.events.CanceledEvent;
+import com.github.vasiliz.myapplication.events.PasswordErrorEvent;
+import com.github.vasiliz.myapplication.events.SuccessEvent;
 
-    private OnloginFinishedListener mOnloginFinishedListener;
+import org.greenrobot.eventbus.EventBus;
+
+public class LoginModelImpl implements ILoginModel {
 
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "test@galileo.edu:asdfasdf", "test2@galileo.edu:asdfasdf"
     };
 
     @Override
-    public void login(final String userName, final String password, final OnloginFinishedListener pListener) {
-
-        mOnloginFinishedListener = pListener;
+    public void login(final String userName, final String password) {
 
         new UserLoginTask(userName, password).execute();
 
@@ -51,15 +53,16 @@ public class LoginModelImpl implements ILoginModel {
         @Override
         protected void onPostExecute(final Boolean pBoolean) {
             if (pBoolean) {
-                mOnloginFinishedListener.onSuccess();
+                EventBus.getDefault().post(new SuccessEvent());
+
             } else {
-                mOnloginFinishedListener.OnPasswordError();
+                EventBus.getDefault().post(new PasswordErrorEvent());
             }
         }
 
         @Override
         protected void onCancelled() {
-            mOnloginFinishedListener.onCanceled();
+            EventBus.getDefault().post(new CanceledEvent());
         }
     }
 }

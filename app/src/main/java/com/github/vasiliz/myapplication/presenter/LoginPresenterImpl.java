@@ -7,7 +7,7 @@ import com.github.vasiliz.myapplication.model.ILoginModel;
 import com.github.vasiliz.myapplication.model.LoginModelImpl;
 import com.github.vasiliz.myapplication.view.IViewLogin;
 
-public class LoginPresenterImpl implements LoginPresenter, ILoginModel.OnloginFinishedListener {
+public class LoginPresenterImpl implements LoginPresenter {
 
     private IViewLogin mIViewLogin;
     private ILoginModel mILoginModel;
@@ -15,23 +15,6 @@ public class LoginPresenterImpl implements LoginPresenter, ILoginModel.OnloginFi
     public LoginPresenterImpl(final IViewLogin pIViewLogin){
         mIViewLogin = pIViewLogin;
         mILoginModel = new LoginModelImpl();
-    }
-
-    @Override
-    public void onCanceled() {
-        mIViewLogin.showProgress(false);
-    }
-
-    @Override
-    public void OnPasswordError() {
-        mIViewLogin.showProgress(false);
-        mIViewLogin.setPasswordError(R.string.password_error);
-    }
-
-    @Override
-    public void onSuccess() {
-        mIViewLogin.showProgress(false);
-        mIViewLogin.successAction();
     }
 
     @Override
@@ -49,7 +32,7 @@ public class LoginPresenterImpl implements LoginPresenter, ILoginModel.OnloginFi
 
         }
         mIViewLogin.showProgress(true);
-        mILoginModel.login(username, password0, this);
+        mILoginModel.login(username, password0);
     }
 
     private boolean isEmailValid(final String pUsername) {
