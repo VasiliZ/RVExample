@@ -24,14 +24,19 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class LoginActivity extends AppCompatActivity implements IViewLogin {
 
-    private AutoCompleteTextView mEmailView;
-    private LoginPresenter mLoginPresenter;
-    private EditText mPassword;
-    private ProgressBar mProgressBar;
-    private View mViewLoginForm;
-    private Button mSnackbar;
+    @BindView(R.id.email) AutoCompleteTextView mEmailView;
+    LoginPresenter mLoginPresenter;
+    @BindView(R.id.password) EditText mPassword;
+    @BindView(R.id.login_progress) ProgressBar mProgressBar;
+    @BindView(R.id.login_form) View mViewLoginForm;
+    @BindView(R.id.snackbar) Button mSnackbar;
+    @BindView(R.id.sing_in_button) Button mLoginButton;
 
     @Override
     protected void onStart() {
@@ -50,6 +55,7 @@ public class LoginActivity extends AppCompatActivity implements IViewLogin {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         initView();
     }
 
@@ -59,35 +65,11 @@ public class LoginActivity extends AppCompatActivity implements IViewLogin {
         mProgressBar = findViewById(R.id.login_progress);
         mViewLoginForm = findViewById(R.id.login_form);
         mSnackbar = findViewById(R.id.snackbar);
-
-        final Button loginButton = findViewById(R.id.sing_in_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(final View v) {
-                attemptLogin();
-            }
-        });
-
-        mSnackbar.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(mViewLoginForm, "this a simple Snackbar", Snackbar.LENGTH_SHORT).setAction("Close", new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        v.setVisibility(View.INVISIBLE);
-                    }
-                }).show();
-            }
-        });
-
         mLoginPresenter = new LoginPresenterImpl(this);
 
     }
-
-    private void attemptLogin() {
+    @OnClick(R.id.sing_in_button)
+    public void attemptLogin() {
         mEmailView.setError(null);
         mPassword.setError(null);
 
@@ -149,5 +131,17 @@ public class LoginActivity extends AppCompatActivity implements IViewLogin {
     public void onPasswordErrorEvent(PasswordErrorEvent pPasswordErrorEvent) {
         showProgress(false);
         setPasswordError(R.string.password_error);
+    }
+
+    @OnClick(R.id.snackbar)
+    public void viewSnackbar(){
+        Snackbar.make(mViewLoginForm, "this a simple Snackbar", Snackbar.LENGTH_SHORT).setAction("Close", new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                v.setVisibility(View.INVISIBLE);
+            }
+        }).show();
+
     }
 }
