@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">password</string>
+    <string name="signin">sing in</string>
+    <string name="signup">sing up</string>
+    <string name="loginError">Unable to login %s</string>
+    <string name="signup_error">Unable to signup %s</string>
+    <string name="success_login">Success regisnred and logged in</string>
 </resources>
