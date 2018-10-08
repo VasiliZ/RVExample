@@ -1,4 +1,4 @@
-package com.github.vasiliz.myapplication;
+package com.github.vasiliz.myapplication.contactlist.entities;
 
 import java.util.Map;
 

@@ -2,7 +2,7 @@ package com.github.vasiliz.myapplication.login;
 
 import android.support.annotation.NonNull;
 
-import com.github.vasiliz.myapplication.User;
+import com.github.vasiliz.myapplication.contactlist.entities.User;
 import com.github.vasiliz.myapplication.domain.FirebaseHelper;
 import com.github.vasiliz.myapplication.lib.EventBus;
 import com.github.vasiliz.myapplication.lib.GreenRobotEventBus;
@@ -30,20 +30,25 @@ public class LoginRepositoryImpl implements LoginRepository {
 
     @Override
     public void signUp(final String pEmail, final String pPassword) {
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(pEmail, pPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        try {
 
-            @Override
-            public void onSuccess(final AuthResult pAuthResult) {
-                postEvent(LoginEvent.ON_SIGNIN_SUCCESS);
-                signIn(pEmail, pPassword);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(pEmail, pPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
 
-            @Override
-            public void onFailure(@NonNull final Exception pE) {
-                postEvent(LoginEvent.ON_SIGNUP_ERROR, pE.getMessage());
-            }
-        });
+                @Override
+                public void onSuccess(final AuthResult pAuthResult) {
+                    postEvent(LoginEvent.ON_SIGNIN_SUCCESS);
+                    signIn(pEmail, pPassword);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+
+                @Override
+                public void onFailure(@NonNull final Exception pE) {
+                    postEvent(LoginEvent.ON_SIGNUP_ERROR, pE.getMessage());
+                }
+            });
+        }catch (Exception pE){
+            postEvent(LoginEvent.ON_SIGNUP_ERROR, pE.getMessage());
+        }
     }
 
     @Override
@@ -117,7 +122,7 @@ public class LoginRepositoryImpl implements LoginRepository {
         }
 
         mFirebaseHelper.changeUserConectedStatus(User.ONLINE);
-        postEvent(LoginEvent.ON_SIGNUP_SUCCESS);
+        postEvent(LoginEvent.ON_SIGNIN_SUCCESS);
     }
 
     private void postEvent(final int pType) {

@@ -9,9 +9,8 @@ import com.github.vasiliz.myapplication.lib.ImageLoader;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ChatApplication extends Application {
+
     private ImageLoader mImageLoader;
-
-
 
     @Override
     public void onCreate() {
@@ -21,15 +20,15 @@ public class ChatApplication extends Application {
 
     }
 
-    private void setUpImageLoader(){
+    private void setUpImageLoader() {
         mImageLoader = new GlideImageLoader(this);
     }
 
-    public ImageLoader getImageLoader(){
+    public ImageLoader getImageLoader() {
         return mImageLoader;
     }
 
-    private void setUpFireBase(){
+    private void setUpFireBase() {
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
     }
 }

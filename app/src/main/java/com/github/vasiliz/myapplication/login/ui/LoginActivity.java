@@ -1,5 +1,6 @@
 package com.github.vasiliz.myapplication.login.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.github.vasiliz.myapplication.R;
+import com.github.vasiliz.myapplication.contactlist.ui.ContactListActivity;
 import com.github.vasiliz.myapplication.login.LoginPresenter;
 import com.github.vasiliz.myapplication.login.LoginPresenterImpl;
 
@@ -38,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     RelativeLayout mMainConteiner;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -82,14 +84,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToMainScreen() {
+
+        startActivity(new Intent(this, ContactListActivity.class));
         Log.d(TAG, "navigateToMainScreen: gogogo");
     }
 
     @Override
-    public void loginError(String pError) {
+    public void loginError(final String pError) {
             mPassword.setText("");
-            String msg = String.format(getString(R.string.loginError), pError);
-            mPassword.setText(msg);
+            final String msg = String.format(getString(R.string.loginError), pError);
+            mPassword.setError(msg);
     }
 
     @Override
@@ -98,16 +102,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void newUserError(String pError) {
+    public void newUserError(final String pError) {
         mPassword.setText("");
-        String msg = String.format(getString(R.string.signup_error), pError);
-        mPassword.setText(msg);
+        final String msg = String.format(getString(R.string.signup_error), pError);
+        mPassword.setError(msg);
     }
 
-    private void setInputs(boolean enabled){
-        mSignIn.setEnabled(true);
-        mSignUp.setEnabled(true);
-        mPassword.setEnabled(true);
-        mEmail.setEnabled(true);
+    private void setInputs(final boolean enabled){
+        mSignIn.setEnabled(enabled);
+        mSignUp.setEnabled(enabled);
+        mPassword.setEnabled(enabled);
+        mEmail.setEnabled(enabled);
     }
 }

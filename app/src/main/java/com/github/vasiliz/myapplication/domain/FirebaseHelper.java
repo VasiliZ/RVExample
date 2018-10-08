@@ -2,7 +2,7 @@ package com.github.vasiliz.myapplication.domain;
 
 import android.support.annotation.NonNull;
 
-import com.github.vasiliz.myapplication.User;
+import com.github.vasiliz.myapplication.contactlist.entities.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

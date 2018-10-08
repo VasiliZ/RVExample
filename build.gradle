@@ -29,7 +29,7 @@ ext {
     minSdkVersion = 16
     targetSdkVersion = 26
     compileSdkVersion = 26
-    supportLibraryVersion = '26.1.0'
+    supportLibraryVersion = '24.+'
     firebaseVersion = '16.0.2'
     butterknifeVersion = '8.5.1'
     eventbusVersion = '3.1.1'
