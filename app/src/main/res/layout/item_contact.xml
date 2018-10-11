@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".contactlist.ui.ContactListActivity"
+    tools:showIn="@layout/contact_list_layout">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle_avatar"
+        android:layout_width="@dimen/circle_width_and_height"
+        android:layout_height="@dimen/circle_width_and_height"
+        android:layout_marginRight="@dimen/margin_16dp"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="@dimen/border_1dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/txt_user"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/circle_avatar"
+        android:layout_toEndOf="@+id/circle_avatar"/>
+    <TextView
+        android:id="@+id/user_status"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medium text"
+        android:layout_below="@id/txt_user"
+        android:layout_alignLeft="@+id/txt_user"
+        android:layout_alignStart="@+id/txt_user"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        />
+
+</RelativeLayout>

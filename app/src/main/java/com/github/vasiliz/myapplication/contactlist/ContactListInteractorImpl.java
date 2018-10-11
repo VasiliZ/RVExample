@@ -5,7 +5,7 @@ public class ContactListInteractorImpl implements ContactListInteractor{
     private ContactListRepository mContactListRepository;
 
     public ContactListInteractorImpl(){
-        mContactListRepository = new ContactListRepositotyImpl();
+        mContactListRepository = new ContactListRepositoryImpl();
     }
 
     @Override
@@ -25,5 +25,6 @@ public class ContactListInteractorImpl implements ContactListInteractor{
 
     @Override
     public void removeContact(String pEmail) {
+        mContactListRepository.removeContact(pEmail);
     }
 }

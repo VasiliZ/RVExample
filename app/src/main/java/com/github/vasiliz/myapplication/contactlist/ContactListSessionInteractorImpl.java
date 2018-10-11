@@ -2,12 +2,11 @@ package com.github.vasiliz.myapplication.contactlist;
 
 public class ContactListSessionInteractorImpl implements ContactListSessionInteractor {
 
-    private ContactListRepositotyImpl mContactListRepositoty;
+    private ContactListRepositoryImpl mContactListRepositoty;
 
-    public ContactListSessionInteractorImpl(){
-            mContactListRepositoty= new ContactListRepositotyImpl();
+    public ContactListSessionInteractorImpl() {
+        mContactListRepositoty = new ContactListRepositoryImpl();
     }
-
 
     @Override
     public void signOff() {
@@ -16,7 +15,7 @@ public class ContactListSessionInteractorImpl implements ContactListSessionInter
 
     @Override
     public String getCurrentUserEmail() {
-       return mContactListRepositoty.getCurrentEmail();
+        return mContactListRepositoty.getCurrentEmail();
     }
 
     @Override

@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".contactlist.ui.ContactListActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".chat.ui.ChatActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

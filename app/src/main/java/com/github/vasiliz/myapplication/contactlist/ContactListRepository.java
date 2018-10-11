@@ -1,5 +1,7 @@
 package com.github.vasiliz.myapplication.contactlist;
 
+import com.github.vasiliz.myapplication.contactlist.entities.User;
+
 public interface ContactListRepository {
 
     void signOff();
@@ -8,6 +10,7 @@ public interface ContactListRepository {
     void destroyContactListListener();
     void subscribeForContactListUpdates();
     void unSubscribeForContactListUpdates();
+    void removeContact(String pEmail);
 
 
 

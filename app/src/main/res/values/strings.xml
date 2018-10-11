@@ -7,4 +7,9 @@
     <string name="loginError">Unable to login %s</string>
     <string name="signup_error">Unable to signup %s</string>
     <string name="success_login">Success regisnred and logged in</string>
+    <string name="add_contact_title">Add contact</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="added_contact">Contact added</string>
+    <string name="error_added_contact">Unable to add user</string>
 </resources>

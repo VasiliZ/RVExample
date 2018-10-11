@@ -22,7 +22,7 @@ public class LoginRepositoryImpl implements LoginRepository {
     private DatabaseReference mDatabaseReference;
     private DatabaseReference mMyUserDatabaseReference;
 
-    public LoginRepositoryImpl(){
+    public LoginRepositoryImpl() {
         mFirebaseHelper = FirebaseHelper.getInstance();
         mDatabaseReference = mFirebaseHelper.getDatabaseReference();
         mMyUserDatabaseReference = mFirebaseHelper.getMyUserReference();
@@ -32,21 +32,22 @@ public class LoginRepositoryImpl implements LoginRepository {
     public void signUp(final String pEmail, final String pPassword) {
         try {
 
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(pEmail, pPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(pEmail, pPassword)
+                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
 
-                @Override
-                public void onSuccess(final AuthResult pAuthResult) {
-                    postEvent(LoginEvent.ON_SIGNIN_SUCCESS);
-                    signIn(pEmail, pPassword);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onSuccess(final AuthResult pAuthResult) {
+                            postEvent(LoginEvent.ON_SIGNUP_SUCCESS);
+                            signIn(pEmail, pPassword);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
 
                 @Override
                 public void onFailure(@NonNull final Exception pE) {
                     postEvent(LoginEvent.ON_SIGNUP_ERROR, pE.getMessage());
                 }
             });
-        }catch (Exception pE){
+        } catch (final Exception pE) {
             postEvent(LoginEvent.ON_SIGNUP_ERROR, pE.getMessage());
         }
     }
@@ -80,7 +81,7 @@ public class LoginRepositoryImpl implements LoginRepository {
                     postEvent(LoginEvent.ON_SIGNIN_ERROR, pE.getMessage());
                 }
             });
-        }catch (final Exception pE){
+        } catch (final Exception pE) {
             postEvent(LoginEvent.ON_SIGNIN_ERROR, pE.getMessage());
         }
 
@@ -88,7 +89,7 @@ public class LoginRepositoryImpl implements LoginRepository {
 
     @Override
     public void chackAlreadyAuthenticated() {
-        if (FirebaseAuth.getInstance().getCurrentUser()!=null){
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             mMyUserDatabaseReference = mFirebaseHelper.getMyUserReference();
             mMyUserDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -102,7 +103,7 @@ public class LoginRepositoryImpl implements LoginRepository {
                     postEvent(LoginEvent.ON_SIGNIN_ERROR, pDatabaseError.getMessage());
                 }
             });
-        }else {
+        } else {
             postEvent(LoginEvent.ON_FILED_ON_RECOVER_SESSION);
         }
     }

@@ -76,10 +76,10 @@ public class FirebaseHelper {
     public DatabaseReference getChatsReference(final String receiver){
         final String keySender = getAuthUserEmail().replace(".","_");
         final String keyReceiver = receiver.replace(".", "_");
-        String keyChat = keySender  + SEPARATOR + keySender;
+        String keyChat = keySender  + SEPARATOR + keyReceiver;
 
         if (keySender.compareTo(keyReceiver)>0){
-            keyChat = keySender + SEPARATOR + keyReceiver;
+            keyChat = keyReceiver + SEPARATOR + keySender;
         }
 
         return mDatabaseReference.getRoot().child(CHAT_PATH).child(keyChat);
