@@ -137,7 +137,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
 
                 @Override
                 public boolean onLongClick(final View v) {
-                    pOnItemClickListener.onItemClickListener(pUser);
+                    pOnItemClickListener.onItemLongClick(pUser);
                     return false;
                 }
             });
